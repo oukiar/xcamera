@@ -12,7 +12,7 @@ def play_shutter():
 
 if platform == 'android':
     from .android_api import (
-        LANDSCAPE, PORTRAIT, take_picture, set_orientation, get_orientation)
+        LANDSCAPE, PORTRAIT, take_picture, set_orientation, get_orientation, set_flashlight)
 
 else:
 

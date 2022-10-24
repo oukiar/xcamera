@@ -11,19 +11,26 @@ FloatLayout:
     XCamera:
         id: xcamera
         on_picture_taken: app.picture_taken(*args)
-
+        play: True
     BoxLayout:
-        orientation: 'horizontal'
+        orientation: "vertical"
         size_hint: 1, None
-        height: sp(50)
+        height: sp(100)
+        spacing: sp(5)
+        ToggleButton:
+            text: "Flash"
+            on_release: xcamera.set_flashlight(self.state != "normal")
+        
+        BoxLayout:
+            orientation: 'horizontal'
 
-        Button:
-            text: 'Set landscape'
-            on_release: xcamera.force_landscape()
+            Button:
+                text: 'Set landscape'
+                on_release: xcamera.force_landscape()
 
-        Button:
-            text: 'Restore orientation'
-            on_release: xcamera.restore_orientation()
+            Button:
+                text: 'Restore orientation'
+                on_release: xcamera.restore_orientation()
 """
 
 

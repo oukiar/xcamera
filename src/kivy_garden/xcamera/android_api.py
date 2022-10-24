@@ -3,6 +3,7 @@ from kivy.logger import Logger
 from jnius import JavaException, PythonJavaClass, autoclass, java_method
 
 Camera = autoclass('android.hardware.Camera')
+CameraParameters = autoclass("android.hardware.Camera$Parameters")
 AndroidActivityInfo = autoclass('android.content.pm.ActivityInfo')
 AndroidPythonActivity = autoclass('org.kivy.android.PythonActivity')
 PORTRAIT = AndroidActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -74,6 +75,19 @@ def take_picture(camera_widget, filename, on_success):
     except JavaException as e:
         Logger.info('Error when calling autofocus: {}'.format(e))
 
+
+def set_flashlight(camera_widget, state):
+    camera = camera_widget._camera._android_camera
+    
+    if state:
+        _f_on = camera.getParameters()
+        _f_on.setFlashMode(CameraParameters.FLASH_MODE_TORCH)
+        camera.setParameters(_f_on)
+    
+    else:
+        _f_off = camera.getParameters()
+        _f_off.setFlashMode(CameraParameters.FLASH_MODE_OFF)
+        camera.setParameters(_f_off)
 
 def set_orientation(value):
     previous = get_orientation()
