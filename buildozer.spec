@@ -38,7 +38,7 @@ version.filename = %(source.dir)s/kivy_garden/xcamera/version.py
 # comma separated e.g. requirements = sqlite3,kivy
 requirements =
     android,
-    kivy==00034a5,
+    kivy,
     python3
 
 # (str) Custom source folders for requirements
@@ -91,19 +91,19 @@ fullscreen = 0
 android.permissions = CAMERA
 
 # (int) Target Android API, should be as high as possible.
-android.api = 27
+android.api = 30
 
 # (int) Minimum API your APK will support.
 android.minapi = 21
 
 # (int) Android SDK version to use
-android.sdk = 20
+#android.sdk = 20
 
 # (str) Android NDK version to use
-android.ndk = 19b
+#android.ndk = 19b
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
-android.ndk_api = 21
+#android.ndk_api = 21
 
 # (bool) Use --private data storage (True) or --dir public storage (False)
 #android.private_storage = True
